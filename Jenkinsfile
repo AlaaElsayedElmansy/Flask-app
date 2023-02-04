@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
 
-            withCredentials([file(credentialsId: 'key', variable: 'key')]) {
+            withCredentials([file(credentialsId: 'service-account', variable: 'key')]) {
               sh """
                   gcloud auth activate-service-account manage-sa@alaa-376816.iam.gserviceaccount.com --key-file ${key}
         
@@ -31,7 +31,7 @@ pipeline {
         
 
 
-            withCredentials([file(service-account: 'kubeconfig', variable: 'KUBECONFIG')]) {
+            withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
               sh """
                   export BUILD_NUMBER=\$(cat ../app-number.txt)
                   mv Deployment/deploy.yaml Deployment/deploy.yaml.tmp
