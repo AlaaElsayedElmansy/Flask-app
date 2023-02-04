@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello_app
+  name: hello_app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello_app
+  template:
+    metadata:
+      labels:
+        app: hello_app
+    spec:
+      containers:
+      - image: alaaelmansy/hello_app:${BUILD_NUMBER}
+        name: hello_app
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        resources: {}
+        
+        ---
+        apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: myservice
+  name: myservice
+spec:
+  ports:
+  - name: hello_app
+    port: 5000
+    protocol: TCP
+    targetPort: 5000
+    nodePort: 30010
+  selector:
+    app: hello_app
+  type: LoadBalancer
+status:
+  loadBalancer: {}
