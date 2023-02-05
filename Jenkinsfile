@@ -24,7 +24,7 @@ pipeline {
 
             withCredentials([file(credentialsId: 'service-account', variable: 'key')]) {
               sh """
-                  gcloud auth activate-service-account project-service-account@alaa-376816.iam.gserviceaccount.com --key-file ${key}
+                  gcloud auth activate-service-account newcluster@alaa-376816.iam.gserviceaccount.com --key-file ${key}
                   
                   
          
