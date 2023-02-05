@@ -4,6 +4,7 @@ metadata:
   labels:
     app: hello_app
   name: hello_app
+  namespace: devops-tools
 spec:
   replicas: 1
   selector:
