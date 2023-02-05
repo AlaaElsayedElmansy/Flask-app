@@ -30,6 +30,7 @@ metadata:
   labels:
     app: hello_app
   name: hello_app
+  namespace: devops-tools
 spec:
   ports:
   - name: hello_app
