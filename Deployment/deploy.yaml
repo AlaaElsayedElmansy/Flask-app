@@ -23,6 +23,7 @@ spec:
         - containerPort: 5000
         resources: {}
         
+---
 
 apiVersion: v1
 kind: Service
@@ -42,4 +43,4 @@ spec:
     app: hello_app
   type: LoadBalancer
 status:
-  loadBalancer: {}
+  loadBalancer: {}
