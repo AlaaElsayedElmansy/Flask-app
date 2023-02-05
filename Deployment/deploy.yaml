@@ -19,7 +19,7 @@ spec:
         app: hello-app
     spec:
       containers:
-      - image: alaaelmansy/hello_app:26
+      - image: alaaelmansy/hello_app:${BUILD_NUMBER}
         name: hello-app
         imagePullPolicy: Always
         ports:
