@@ -24,8 +24,10 @@ pipeline {
 
             withCredentials([file(credentialsId: 'service-account', variable: 'key')]) {
               sh """
-                  gcloud auth activate-service-account manage-sa@alaa-376816.iam.gserviceaccount.com --key-file ${key}
-        
+                  gcloud auth activate-service-account project-service-account@alaa-376816.iam.gserviceaccount.com --key-file ${key}
+                  https://console.cloud.google.com/iam-admin/serviceaccounts/details/109497966594790761649?project=alaa-376816
+                  
+         
                 """
             }
         
