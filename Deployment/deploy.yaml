@@ -1,46 +1,50 @@
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: "devops-tools"
+  name: new
   labels:
-    app: hello_app
-  name: hello_app
-  namespace: devops-tools
+    app: hello-app
+    name: hello-app
+  
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello_app
+      app: hello-app
   template:
     metadata:
       labels:
-        app: hello_app
+        app: hello-app
     spec:
       containers:
-      - image: alaaelmansy/hello_app:${BUILD_NUMBER}
-        name: hello_app
+      - image: alaaelmansy/hello_app:26
+        name: hello-app
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
-        resources: {}
-        
+
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    app: hello_app
-  name: hello_app
+  name: hello-app
   namespace: devops-tools
+  labels:
+    app: hello-app
+    name: hello-app
+  
 spec:
   ports:
-  - name: hello_app
+  - name: hello-app
     port: 5000
     protocol: TCP
     targetPort: 5000
     nodePort: 30010
   selector:
-    app: hello_app
+    app: hello-app
   type: LoadBalancer
 status:
-  loadBalancer: {}
+  loadBalancer: {}
