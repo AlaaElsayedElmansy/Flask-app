@@ -5,7 +5,7 @@ pipeline {
       steps {
         script {
        
-            withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'username', passwordVariable: 'password')]) {
+            withCredentials([usernamePassword(credentialsId: 'docker', usernameVariable: 'username', passwordVariable: 'password')]) {
               sh """
         
                   docker login -u ${username} -p ${password}
@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
 
-            withCredentials([file(credentialsId: 'service-account', variable: 'key')]) {
+            withCredentials([file(credentialsId: 'sa', variable: 'key')]) {
               sh """
                   gcloud auth activate-service-account newcluster@alaa-376816.iam.gserviceaccount.com --key-file ${key}
                   
